@@ -1,0 +1,44 @@
+{
+  // Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  "Base file": {
+    "scope": "python",
+    "prefix": "numworks",
+    "body": [
+      "import utility",
+      "",
+      "",
+      "# The actual usable screen size is (in pixel):",
+      "# WIDTH = 320",
+      "# HEIGHT = 222",
+      "# The number of line and columns visible at the same time in the interpreter is (based on 'M'):",
+      "# MAX_LINE = 16  # Python font size = small",
+      "# MAX_COLUMN = 42  # Python font size = small",
+      "# MAX_LINE = 12  # Python font size = large",
+      "# MAX_COLUMN = 29  # Python font size = large",
+      "",
+      "",
+      "${0}",
+      "",
+      "",
+      "menu = [",
+      "    # \"line title: function(arguments)\",",
+      "    \"\",",
+      "]",
+      "",
+      "utility.printMenu(\"${1:Program title}\", menu)"
+    ],
+    "description": "Base file"
+  },
+  "Print formatted output": {
+    "scope": "python",
+    "prefix": "formout",
+    "body": [
+      "print(\"${1:text} = {:,.${3:significant numbers}g}\".format(${2:variable}))",
+      "${0}"
+    ],
+    "description": "Print formatted output"
+  }
+}
