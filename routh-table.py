@@ -29,11 +29,11 @@ def routh(*args):
     table.append(row0)
     table.append(row1)
 
-    row = []
-    zeroFirstColumn = False
-    zeroRow = False
-    zeroRowCount = 0
     for i in range(degree-2):
+        row = []
+        zeroFirstColumn = False
+        zeroRow = False
+        zeroRowCount = 0
         for j in range(len(table[i])-1):
             b = - (table[i][0] * table[i+1][j+1] - table[i+1]
                    [0] * table[i][j+1]) / table[i+1][0]
@@ -41,11 +41,13 @@ def routh(*args):
             zeroRowCount += abs(b)
         row.append(0)
         table.append(row)
-        row = []
+
         if zeroRowCount == 0:
             zeroRow = True
-            print("zero row")
+            showTable(degree, table)
+            print("Full row of zero\n")
             break
+
         if table[i+2][0] == 0:
             zeroFirstColumn = True
             showTable(degree, table)
@@ -82,8 +84,8 @@ def routh(*args):
             table.append(row)
             row = []
 
-    if zeroRow:
-        print("Entire row of zeros")
+    # if zeroRow:
+    #     print("Entire row of zeros")
         # TODO algorithm for the row of zero
 
     # print(table)
@@ -131,7 +133,12 @@ def signChanges(table):
 
 
 if __name__ == "__main__":
-    routh(3, 2, 1)
-    routh(3, -2, 1)
-    routh(1, 2, 3, 6, 5, 3)
-    # routh(1, 7, 6, 42, 8, 56)
+    # routh(3, 2, 1) # no sign change
+    # routh(3, -2, 1) # 2 sign change
+    # routh(1, 2, 3, 6, 5, 3) # zero 1st column
+    # routh(1, 4, 2, 8, 3) # zero 1st column
+    # routh(1, 7, 6, 42, 8, 56) # zero row
+    # routh(1, 1, 12, 22, 39, 59, 48, 38, 20) # zero row
+    # routh(1, 1, -6, 0, -1, -1, 6) # zero row
+    # routh(6, -1, -1, 0, -6, 1, 1) # zero row
+    routh(1, 110, 3875, 43760, 500, 6000)
